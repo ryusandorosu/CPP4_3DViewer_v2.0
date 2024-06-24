@@ -7,7 +7,7 @@
 #include <QMainWindow>
 #include <QtWidgets>
 
-#include "glview.h"
+#include "../GLView/glview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

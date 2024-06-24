@@ -9,9 +9,9 @@
 #include <QOpenGLWidget>
 #include <QTimer>
 
-#include "../Back/model_facade.h"
-#include "../Controller/controller.h"
-#include "observer.h"
+#include "../../Back/model_facade.h"
+#include "../../Controller/controller.h"
+#include "../observer.h"
 
 class glView : public QOpenGLWidget, public Observer {
  public:

@@ -521,7 +521,7 @@
   <customwidget>
    <class>glView</class>
    <extends>QWidget</extends>
-   <header location="global">glview.h</header>
+   <header location="global">GLView/glview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

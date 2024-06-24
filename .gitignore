@@ -1,7 +1,25 @@
 C8_*
+CPP4_*
 code-samples
 materials
-build
+build*
+.DS_Store
+
+examples
+.st
+.idea
+.vscode
+cmake-build-debug
+*.cmake
+CMakeCache.txt
+CMakeFiles
+.clang-format
+.qmake.stash
+build-*
+*.user
+*_autogen
+
+CMakeLists.txt
 
 # Prerequisites
 *.d

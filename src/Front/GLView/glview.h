@@ -18,10 +18,12 @@ class glView : public QOpenGLWidget, public Observer {
   glView(QWidget *parent = 0) : QOpenGLWidget(parent) {};
   ~glView() { deletePointers(); };
 
+  /* glview */
   void initializeGL() override;
   void resizeGL(int w, int h) override { glViewport(0, 0, w, h); };
   void paintGL() override;
 
+  /* transformation */
   void scaleChange(double scaleLocal);
 
   void turnX(double xDeg);
@@ -32,6 +34,7 @@ class glView : public QOpenGLWidget, public Observer {
   void shiftY(double yshiftLocal);
   void shiftZ(double zshiftLocal);
 
+  /* file_opening */
   void openFile(QString filenameLocal);
   void deletePointers();
   int vertexCountReturn() { return vertex_count / 3; };

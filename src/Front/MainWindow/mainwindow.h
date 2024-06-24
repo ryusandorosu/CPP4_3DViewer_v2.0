@@ -24,7 +24,12 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
 
  private slots:
+  /* ui */
   void on_toolButton_clicked();
+  void on_pushButton_Scale_clicked();
+  void on_scaleEdit_returnPressed();  // реагирует на энтер
+
+  /* transformation */
   void on_horizontalSlider_X_rotation_valueChanged(int value);
   void on_horizontalSlider_Y_rotation_valueChanged(int value);
   void on_horizontalSlider_Z_rotation_valueChanged(int value);
@@ -32,14 +37,12 @@ class MainWindow : public QMainWindow {
   void on_horizontalSlider_Y_moving_valueChanged(int value);
   void on_horizontalSlider_Z_moving_valueChanged(int value);
 
-  void on_pushButton_Scale_clicked();
-  void on_scaleEdit_returnPressed();  // реагирует на энтер
-
  private:
   Ui::MainWindow *ui;
   glView mView;
 
-  void sliderSetup(); // setup begins here
+  /* setup */
+  void sliderSetup();
   void connectSetup();
   void statusBarUpdate();
 };

@@ -24,20 +24,178 @@
      </rect>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_6">
+   <widget class="QGroupBox" name="groupBox_bonuses">
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>440</y>
+      <y>410</y>
       <width>261</width>
-      <height>71</height>
+      <height>291</height>
      </rect>
     </property>
     <property name="title">
      <string/>
     </property>
+    <widget class="QComboBox" name="comboBox_projection">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>projection: parallel / orthogonal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>projection: central / perspective</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_typeLine">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>edges: solid</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>edges: dashed</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_typeVertex">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>131</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>verticles: none</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>verticles: round</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>verticles: square</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QSlider" name="slider_edge_thickness">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
+       <width>111</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>-50</number>
+     </property>
+     <property name="maximum">
+      <number>50</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="sliderPosition">
+      <number>0</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QSlider" name="slider_vertice_size">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>80</y>
+       <width>111</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>-50</number>
+     </property>
+     <property name="maximum">
+      <number>50</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="sliderPosition">
+      <number>0</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphics_background_color">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>150</y>
+       <width>71</width>
+       <height>51</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphics_color_edges">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>150</y>
+       <width>71</width>
+       <height>51</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGraphicsView" name="graphics_verticles_color">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>150</y>
+       <width>71</width>
+       <height>51</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="reset_values_button">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>230</y>
+       <width>100</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>reset values</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_7">
+   <widget class="QGroupBox" name="groupBox_filename">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -95,13 +253,13 @@
      <string>Open file</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QGroupBox" name="groupBox_rotation">
     <property name="geometry">
      <rect>
       <x>690</x>
       <y>40</y>
       <width>261</width>
-      <height>154</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
@@ -111,7 +269,7 @@
      <property name="geometry">
       <rect>
        <x>15</x>
-       <y>15</y>
+       <y>10</y>
        <width>105</width>
        <height>16</height>
       </rect>
@@ -127,7 +285,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>30</y>
        <width>71</width>
        <height>101</height>
       </rect>
@@ -190,7 +348,7 @@
      <property name="geometry">
       <rect>
        <x>80</x>
-       <y>44</y>
+       <y>30</y>
        <width>171</width>
        <height>101</height>
       </rect>
@@ -256,13 +414,13 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QGroupBox" name="groupBox_scale">
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>200</y>
+      <y>190</y>
       <width>261</width>
-      <height>71</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="title">
@@ -274,28 +432,18 @@
        <x>10</x>
        <y>10</y>
        <width>241</width>
-       <height>60</height>
+       <height>31</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Масштаб</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
+      <item row="0" column="0">
        <widget class="QLineEdit" name="scaleEdit">
         <property name="text">
          <string>1</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="0" column="1">
        <widget class="QPushButton" name="pushButton_Scale">
         <property name="text">
          <string>Scale</string>
@@ -305,11 +453,11 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
+   <widget class="QGroupBox" name="groupBox_moving">
     <property name="geometry">
      <rect>
       <x>690</x>
-      <y>280</y>
+      <y>250</y>
       <width>261</width>
       <height>151</height>
      </rect>

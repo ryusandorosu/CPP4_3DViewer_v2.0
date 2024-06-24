@@ -11,10 +11,15 @@ CONFIG += c++17
 
 SOURCES += \
     GLView/glview.cpp \
+    GLView/file_opening.cpp \
+    GLView/transformation.cpp \
     ../Back/fileReaderPlus.cc \
     ../Controller/controller.cc \
     main.cpp \
     MainWindow/mainwindow.cpp
+    MainWindow/setup.cpp
+    MainWindow/transformation.cpp
+    MainWindow/ui.cpp
 
 HEADERS += \
     GLView/glview.h \

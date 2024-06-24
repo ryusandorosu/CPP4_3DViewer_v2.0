@@ -7,21 +7,17 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
 
+  setWindowTitle("3DViewer_v2.0");
   connectSetup();
 }
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::on_toolButton_clicked() {
-  QString fileName =
-      QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("*"));
+  QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("*"));
   ui->widget->openFile(fileName);
-  int i = ui->widget->vertexCountReturn();
-  QString s = QString::number(i);
-  ui->label_edges->setText(s);
-  i = ui->widget->indexesCountReturn();
-  s = QString::number(i);
-  ui->label_vertexes->setText(s);
+
   ui->file_name->setText(fileName);
+  statusBarUpdate();
 
   sliderSetup();  //сброс параметров при загрузке новой модели
 }
@@ -40,6 +36,16 @@ void MainWindow::sliderSetup() {
 
 void MainWindow::connectSetup() {
   connect(ui->scaleEdit, &QLineEdit::returnPressed, this, &MainWindow::on_scaleEdit_returnPressed);
+}
+
+void MainWindow::statusBarUpdate() {
+  int vertexCount = ui->widget->vertexCountReturn();
+  int edgeCount = ui->widget->indexesCountReturn();
+
+  QString vertexCountStr = QString::number(vertexCount);
+  QString edgeCountStr = QString::number(edgeCount);
+
+  ui->statusBar->showMessage(tr("Vertices: %1 | Edges: %2").arg(vertexCountStr).arg(edgeCountStr));
 }
 
 /* --- setup  end  --- */

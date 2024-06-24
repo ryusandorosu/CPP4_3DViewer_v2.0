@@ -21,7 +21,6 @@ class MainWindow : public QMainWindow {
  public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
-  // ~MainWindow() { delete Ui::MainWindow(); };
 
  private slots:
   void on_toolButton_clicked();
@@ -41,5 +40,6 @@ class MainWindow : public QMainWindow {
 
   void sliderSetup(); // setup begins here
   void connectSetup();
+  void statusBarUpdate();
 };
 #endif  // MAINWINDOW_H

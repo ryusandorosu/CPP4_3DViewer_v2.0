@@ -28,6 +28,7 @@ class MainWindow : public QMainWindow {
   void on_toolButton_clicked();
   void on_pushButton_Scale_clicked();
   void on_scaleEdit_returnPressed();  // реагирует на энтер
+  void on_comboBox_projection_activated(int index); // bonus 1
 
   /* transformation */
   void on_horizontalSlider_X_rotation_valueChanged(int value);

@@ -49,7 +49,7 @@ void glView::shiftZ(double zshiftLocal) {
 }
 
 void glView::scaleChange(double scaleLocal) {
-  ScaleTransformation scaleT;
+  // ScaleTransformation scaleT;
   controller::scaleMatrix(vertex_pointer, vertex_count, scale);
   scale = 1 / scaleLocal;
   controller::scaleMatrix(vertex_pointer, vertex_count, scaleLocal);

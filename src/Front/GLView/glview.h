@@ -18,10 +18,14 @@ class glView : public QOpenGLWidget, public Observer {
   glView(QWidget *parent = 0) : QOpenGLWidget(parent) {};
   ~glView() { deletePointers(); };
 
+  /* variables*/
+  int projectionMode; // bonus 1
+
   /* glview */
   void initializeGL() override;
   void resizeGL(int w, int h) override { glViewport(0, 0, w, h); };
   void paintGL() override;
+  void setupProjection(); // bonus 1
 
   /* transformation */
   void scaleChange(double scaleLocal);

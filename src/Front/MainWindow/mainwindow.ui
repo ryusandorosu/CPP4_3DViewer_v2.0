@@ -47,12 +47,12 @@
      </property>
      <item>
       <property name="text">
-       <string>projection: parallel / orthogonal</string>
+       <string>projection: central / perspective</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>projection: central / perspective</string>
+       <string>projection: parallel / orthogonal</string>
       </property>
      </item>
     </widget>

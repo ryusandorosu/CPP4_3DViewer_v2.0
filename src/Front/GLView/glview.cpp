@@ -23,6 +23,7 @@ void glView::paintGL() {
   setProjection();  // bonus 1.1
   glEnableClientState(GL_VERTEX_ARRAY);
   setLineMode();    // bonus 1.2
+  setVertexMode();  // bonus 1.2
 
   glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
   glDrawElements(GL_LINES, indexes_count, GL_UNSIGNED_INT, indexes_pointer);
@@ -42,10 +43,25 @@ void glView::setProjection() {  // bonus 1.1
 }
 
 void glView::setLineMode() {  // bonus 1.2
+  glLineWidth(edgeThickness);
   if (line_mode_ == Dashed) {
     glEnable(GL_LINE_STIPPLE);
     glLineStipple(1, 0x00FF);  // dashed pattern
   } else {
     glDisable(GL_LINE_STIPPLE);
+  }
+}
+
+void glView::setVertexMode() {  // bonus 1.2
+  if (vertex_mode_ != Empty) {
+    glPointSize(verticleSize);
+
+    if (vertex_mode_ == Circle) {
+      glEnable(GL_POINT_SMOOTH);
+    }
+    glDrawArrays(GL_POINTS, 1, vertex_count);
+    if (vertex_mode_ == Circle) { // actually Square
+      glDisable(GL_POINT_SMOOTH);
+    }
   }
 }

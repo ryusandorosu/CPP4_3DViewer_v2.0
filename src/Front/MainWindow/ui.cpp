@@ -15,12 +15,31 @@ void MainWindow::on_pushButton_Scale_clicked() {
   if (scaleFactor <= 0) {
     QMessageBox::warning(this, "Ошибка", "Масштаб должен быть больше нуля");
     ui->scaleEdit->clear();
-  } else
+  } else {
     ui->widget->scaleChange(scaleFactor);
+  }
 }
 
-void MainWindow::on_scaleEdit_returnPressed() {
-  on_pushButton_Scale_clicked();
+void MainWindow::on_pushButton_Edge_clicked() {
+  int edgeSize = ui->edge_thickness_edit->text().toInt();
+  if (edgeSize <= 0) {
+    QMessageBox::warning(this, "Ошибка", "Масштаб должен быть больше нуля");
+    ui->edge_thickness_edit->clear();
+  } else {
+    ui->widget->edgeThickness = edgeSize;
+    ui->widget->update();
+  }
+}
+
+void MainWindow::on_pushButton_Vertex_clicked() {
+  int vertexSize = ui->vertex_thickness_edit->text().toInt();
+  if (vertexSize <= 0) {
+    QMessageBox::warning(this, "Ошибка", "Масштаб должен быть больше нуля");
+    ui->edge_thickness_edit->clear();
+  } else {
+    ui->widget->verticleSize = vertexSize;
+    ui->widget->update();
+  }
 }
 
 void MainWindow::on_comboBox_projection_activated(int index) {  // bonus 1.1

@@ -25,13 +25,3 @@ void MainWindow::on_horizontalSlider_Z_moving_valueChanged(int value) {
   ui->label_Z_move->setNum(value);
   ui->widget->shiftZ(ui->label_Z_move->text().toDouble());
 }
-
-void MainWindow::linesSizeSliderChanged(int value) {
-  ui->widget->edgeThickness = value;
-  ui->widget->update();
-}
-
-void MainWindow::vertexSizeSliderChanged(int value) {
-  ui->widget->verticleSize = value;
-  ui->widget->update();
-}

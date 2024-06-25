@@ -27,7 +27,14 @@ class MainWindow : public QMainWindow {
   /* ui */
   void on_toolButton_clicked();
   void on_pushButton_Scale_clicked();
-  void on_scaleEdit_returnPressed();  // реагирует на энтер
+  void on_pushButton_Edge_clicked();  // bonus 1.2
+  void on_pushButton_Vertex_clicked();  // bonus 1.2
+
+  /* ui: reacting to enter */
+  void on_scaleEdit_returnPressed() { on_pushButton_Scale_clicked(); };
+  void on_edgeEdit_returnPressed() { on_pushButton_Edge_clicked(); };
+  void on_vertexEdit_returnPressed() { on_pushButton_Vertex_clicked(); };
+
   void on_comboBox_projection_activated(int index); // bonus 1.1
   void on_comboBox_typeLine_activated(int index);   // bonus 1.2
   void on_comboBox_typeVertex_activated(int index);   // bonus 1.2
@@ -36,11 +43,10 @@ class MainWindow : public QMainWindow {
   void on_horizontalSlider_X_rotation_valueChanged(int value);
   void on_horizontalSlider_Y_rotation_valueChanged(int value);
   void on_horizontalSlider_Z_rotation_valueChanged(int value);
+
   void on_horizontalSlider_X_moving_valueChanged(int value);
   void on_horizontalSlider_Y_moving_valueChanged(int value);
   void on_horizontalSlider_Z_moving_valueChanged(int value);
-  void linesSizeSliderChanged(int value);   // bonus 1.2
-  void vertexSizeSliderChanged(int value);  // bonus 1.2
 
  private:
   Ui::MainWindow *ui;

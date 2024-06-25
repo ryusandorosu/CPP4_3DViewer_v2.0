@@ -10,18 +10,21 @@ void MainWindow::sliderSetup() {
   ui->horizontalSlider_Z_moving->setValue(0);
 
   ui->comboBox_typeLine->activated(0);    // solid
-  ui->slider_edge_thickness->setValue(1);
+  ui->edge_thickness_edit->setText("1");
+
   ui->comboBox_typeVertex->activated(0);  // empty
-  ui->slider_vertice_size->setValue(5);
+  ui->vertex_thickness_edit->setText("5");
 }
 
 void MainWindow::connectSetup() {
   // scale
   connect(ui->scaleEdit, &QLineEdit::returnPressed, this, &MainWindow::on_scaleEdit_returnPressed);
+
   // edge parameters
-  connect(ui->slider_edge_thickness, &QScrollBar::valueChanged, (this), &MainWindow::linesSizeSliderChanged);
+  connect(ui->edge_thickness_edit, &QLineEdit::returnPressed, this, &MainWindow::on_edgeEdit_returnPressed);
+
   // verticle parameters
-  connect(ui->slider_vertice_size, &QScrollBar::valueChanged, (this), &MainWindow::vertexSizeSliderChanged);
+  connect(ui->vertex_thickness_edit, &QLineEdit::returnPressed, this, &MainWindow::on_vertexEdit_returnPressed);
 }
 
 void MainWindow::statusBarUpdate() {

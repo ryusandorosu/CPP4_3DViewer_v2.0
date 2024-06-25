@@ -1,5 +1,5 @@
-#ifndef GLVIEW_H
-#define GLVIEW_H
+#ifndef CPP4_3DVIEWER_V2_0_2_SRC_FRONT_GLVIEW_GLVIEW_H_
+#define CPP4_3DVIEWER_V2_0_2_SRC_FRONT_GLVIEW_GLVIEW_H_
 
 #include <locale.h>
 #include <string.h>
@@ -19,13 +19,17 @@ class glView : public QOpenGLWidget, public Observer {
   ~glView() { deletePointers(); };
 
   /* variables*/
-  int projectionMode; // bonus 1
+  enum ProjectionMode { Central, Parallel };
+  enum LineMode { Solid, Dashed };
+  ProjectionMode projection_mode_;
+  LineMode line_mode_;
 
   /* glview */
   void initializeGL() override;
   void resizeGL(int w, int h) override { glViewport(0, 0, w, h); };
   void paintGL() override;
-  void setupProjection(); // bonus 1
+  void setProjection(); // bonus 1.1
+  void setLineMode();   // bonus 1.2
 
   /* transformation */
   void scaleChange(double scaleLocal);
@@ -51,18 +55,14 @@ class glView : public QOpenGLWidget, public Observer {
   // void wheelEvent(QWheelEvent *event) override;
 
  private:
+  /* variables */
   double scale = 1;
-  double xdegree = 0;
-  double ydegree = 0;
-  double zdegree = 0;
-  double xshift = 0;
-  double yshift = 0;
-  double zshift = 0;
+  double xdegree, ydegree, zdegree = 0;
+  double xshift, yshift, zshift = 0;
   double *vertex_pointer = NULL;
-  int vertex_count = 0;
   unsigned int *indexes_pointer = NULL;
-  int indexes_count = 0;
+  int vertex_count, indexes_count = 0;
   char *filename = NULL;
 };
 
-#endif  // GLVIEW_H
+#endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_GLVIEW_GLVIEW_H_

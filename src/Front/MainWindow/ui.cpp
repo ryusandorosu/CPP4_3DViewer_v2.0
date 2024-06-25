@@ -23,12 +23,22 @@ void MainWindow::on_scaleEdit_returnPressed() {
   on_pushButton_Scale_clicked();
 }
 
-void MainWindow::on_comboBox_projection_activated(int index) {  // bonus 1
+void MainWindow::on_comboBox_projection_activated(int index) {  // bonus 1.1
   if (index == 0) {
-    ui->widget->projectionMode = 0; // central
+    ui->widget->projection_mode_ = glView::Central;
     ui->widget->update();
   } else if (index == 1) {
-    ui->widget->projectionMode = 1; // parallel
+    ui->widget->projection_mode_ = glView::Parallel;
+    ui->widget->update();
+  }
+}
+
+void MainWindow::on_comboBox_typeLine_activated(int index) {  // bonus 1.2
+  if (index == 0) {
+    ui->widget->line_mode_ = glView::Solid;
+    ui->widget->update();
+  } else if (index == 1) {
+    ui->widget->line_mode_ = glView::Dashed;
     ui->widget->update();
   }
 }

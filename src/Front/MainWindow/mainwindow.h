@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef CPP4_3DVIEWER_V2_0_2_SRC_FRONT_MAINWINDOW_MAINWINDOW_H_
+#define CPP4_3DVIEWER_V2_0_2_SRC_FRONT_MAINWINDOW_MAINWINDOW_H_
 
 #include <locale.h>
 
@@ -28,7 +28,8 @@ class MainWindow : public QMainWindow {
   void on_toolButton_clicked();
   void on_pushButton_Scale_clicked();
   void on_scaleEdit_returnPressed();  // реагирует на энтер
-  void on_comboBox_projection_activated(int index); // bonus 1
+  void on_comboBox_projection_activated(int index); // bonus 1.1
+  void on_comboBox_typeLine_activated(int index);   // bonus 1.2
 
   /* transformation */
   void on_horizontalSlider_X_rotation_valueChanged(int value);
@@ -47,4 +48,4 @@ class MainWindow : public QMainWindow {
   void connectSetup();
   void statusBarUpdate();
 };
-#endif  // MAINWINDOW_H
+#endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_MAINWINDOW_MAINWINDOW_H_

@@ -9,7 +9,15 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-LIBS += -framework OpenGL -framework GLUT
+unix:!macx {
+    message("Building for Linux")
+    LIBS += -lGLU
+}
+
+macx {
+    message("Building for macOS")
+    LIBS += -framework OpenGL -framework GLUT
+}
 
 SOURCES += \
     GLView/glview.cpp \

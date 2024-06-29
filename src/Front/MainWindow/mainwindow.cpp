@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
   setWindowTitle("3DViewer_v2.0");
   connectSetup();
+  defaultColors();
 }
 
 MainWindow::~MainWindow() { delete ui; }

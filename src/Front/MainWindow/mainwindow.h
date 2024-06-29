@@ -24,17 +24,21 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
 
  private slots:
-  /* ui */
+  /* ui: buttons */
   void on_toolButton_clicked();
   void on_pushButton_Scale_clicked();
   void on_pushButton_Edge_clicked();  // bonus 1.2
   void on_pushButton_Vertex_clicked();  // bonus 1.2
+  void on_background_color_button_clicked();  // bonus 1.3
+
+  void selectAndSetColor(QColor& targetColor, QGraphicsView* targetLabel);  // bonus 1.2, 1.3
 
   /* ui: reacting to enter */
   void on_scaleEdit_returnPressed() { on_pushButton_Scale_clicked(); };
   void on_edgeEdit_returnPressed() { on_pushButton_Edge_clicked(); };
   void on_vertexEdit_returnPressed() { on_pushButton_Vertex_clicked(); };
 
+  /* ui: combo boxes */
   void on_comboBox_projection_activated(int index); // bonus 1.1
   void on_comboBox_typeLine_activated(int index);   // bonus 1.2
   void on_comboBox_typeVertex_activated(int index);   // bonus 1.2
@@ -56,5 +60,6 @@ class MainWindow : public QMainWindow {
   void sliderSetup();
   void connectSetup();
   void statusBarUpdate();
+  void defaultColors(); // bonus 1.2, 1.3
 };
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_MAINWINDOW_MAINWINDOW_H_

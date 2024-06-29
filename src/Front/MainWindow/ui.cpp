@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 
+/* buttons */
+
 void MainWindow::on_toolButton_clicked() {
   QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("*"));
   ui->widget->openFile(fileName);
@@ -42,6 +44,12 @@ void MainWindow::on_pushButton_Vertex_clicked() {
   }
 }
 
+void MainWindow::on_background_color_button_clicked() {
+  selectAndSetColor(ui->widget->backgroundColor, ui->graphics_background_color);
+}
+
+/* combo boxes */
+
 void MainWindow::on_comboBox_projection_activated(int index) {  // bonus 1.1
   if (index == 0) {
     ui->widget->projection_mode_ = glView::Central;
@@ -72,5 +80,25 @@ void MainWindow::on_comboBox_typeVertex_activated(int index) {  // bonus 1.2
   } else if (index == 2) {
     ui->widget->vertex_mode_ = glView::Square;
     ui->widget->update();
+  }
+}
+
+/* other */
+
+void MainWindow::selectAndSetColor(QColor& targetColor, QGraphicsView* targetLabel) {
+  QColorDialog dialog;
+  dialog.setOption(QColorDialog::ShowAlphaChannel);
+
+  if (dialog.exec() == QDialog::Accepted) {
+    QColor color = dialog.selectedColor();
+    if (color.isValid()) {
+      targetColor = color;
+      QString qss =
+          QString(
+              "background-color: %1;\nborder:1px solid;\n border-color: black;")
+              .arg(color.name());
+      targetLabel->setStyleSheet(qss);
+      ui->widget->update();
+    }
   }
 }

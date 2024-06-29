@@ -39,7 +39,7 @@ void MainWindow::statusBarUpdate() {
 
 void MainWindow::defaultColors() {
   // Background
-  ui->widget->backgroundColor = QColor(64, 64, 64);
+  ui->glwidget->backgroundColor = QColor(64, 64, 64);
   QColor backgroundDefaultColor = ui->widget->backgroundColor;
   QString backgroundQSS =
       QString("background-color: %1;\nborder:1px solid;\n border-color: black;")

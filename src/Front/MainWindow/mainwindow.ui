@@ -149,7 +149,7 @@
       <rect>
        <x>150</x>
        <y>40</y>
-       <width>91</width>
+       <width>127</width>
        <height>31</height>
       </rect>
      </property>
@@ -175,7 +175,7 @@
       <rect>
        <x>150</x>
        <y>80</y>
-       <width>91</width>
+       <width>127</width>
        <height>31</height>
       </rect>
      </property>
@@ -195,6 +195,19 @@
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="background_color_button">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>71</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>background</string>
+     </property>
     </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_filename">

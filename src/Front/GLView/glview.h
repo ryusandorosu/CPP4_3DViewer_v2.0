@@ -26,7 +26,7 @@ class glView : public QOpenGLWidget, public Observer {
   LineMode line_mode_;
   VertexMode vertex_mode_;
   int edgeThickness = 1, verticleSize = 5;
-  QColor backgroundColor;
+  QColor backgroundColor, edgeColor, verticleColor;
 
   /* glview */
   void initializeGL() override;

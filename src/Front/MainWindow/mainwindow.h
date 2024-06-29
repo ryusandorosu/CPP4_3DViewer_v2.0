@@ -30,6 +30,8 @@ class MainWindow : public QMainWindow {
   void on_pushButton_Edge_clicked();  // bonus 1.2
   void on_pushButton_Vertex_clicked();  // bonus 1.2
   void on_background_color_button_clicked();  // bonus 1.3
+  void on_color_edges_button_clicked();       // bonus 1.2
+  void on_color_verticles_button_clicked();   // bonus 1.2
 
   void selectAndSetColor(QColor& targetColor, QGraphicsView* targetLabel);  // bonus 1.2, 1.3
 

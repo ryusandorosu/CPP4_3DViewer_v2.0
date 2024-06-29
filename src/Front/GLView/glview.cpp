@@ -15,7 +15,6 @@ void glView::initializeGL() {
 
 // отрисовка
 void glView::paintGL() {
-//  glClearColor(0, 0, 0, 0);
   glClearColor(backgroundColor.redF(), backgroundColor.greenF(), backgroundColor.blueF(), backgroundColor.alphaF());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glMatrixMode(GL_MODELVIEW);
@@ -23,8 +22,8 @@ void glView::paintGL() {
 
   setProjection();  // bonus 1.1
   glEnableClientState(GL_VERTEX_ARRAY);
-  setLineMode();    // bonus 1.2
   setVertexMode();  // bonus 1.2
+  setLineMode();    // bonus 1.2
 
   glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
   glDrawElements(GL_LINES, indexes_count, GL_UNSIGNED_INT, indexes_pointer);
@@ -44,6 +43,7 @@ void glView::setProjection() {  // bonus 1.1
 }
 
 void glView::setLineMode() {  // bonus 1.2
+  glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());
   glLineWidth(edgeThickness);
   if (line_mode_ == Dashed) {
     glEnable(GL_LINE_STIPPLE);
@@ -55,6 +55,7 @@ void glView::setLineMode() {  // bonus 1.2
 
 void glView::setVertexMode() {  // bonus 1.2
   if (vertex_mode_ != Empty) {
+    glColor3f(verticleColor.redF(), verticleColor.greenF(), verticleColor.blueF());
     glPointSize(verticleSize);
 
     if (vertex_mode_ == Circle) {

@@ -45,4 +45,20 @@ void MainWindow::defaultColors() {
       QString("background-color: %1;\nborder:1px solid;\n border-color: black;")
           .arg(backgroundDefaultColor.name());
   ui->graphics_background_color->setStyleSheet(backgroundQSS);
+
+  // Edges
+  ui->widget->edgeColor = QColor(0, 0, 0);
+  QColor edgeDefaultColor = ui->widget->edgeColor;
+  QString edgeQSS =
+      QString("background-color: %1;\nborder:1px solid;\n border-color: black;")
+          .arg(edgeDefaultColor.name());
+  ui->graphics_color_edges->setStyleSheet(edgeQSS);
+
+  // Verticles
+  ui->widget->verticleColor = QColor(255, 0, 0);
+  QColor verticleDefaultColor = ui->widget->verticleColor;
+  QString verticleQSS =
+      QString("background-color: %1;\nborder:1px solid;\n border-color: black;")
+          .arg(verticleDefaultColor.name());
+  ui->graphics_verticles_color->setStyleSheet(verticleQSS);
 }

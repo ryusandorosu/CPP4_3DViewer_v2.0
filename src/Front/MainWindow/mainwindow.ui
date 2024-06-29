@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>961</width>
-    <height>776</height>
+    <height>743</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -207,6 +207,32 @@
      </property>
      <property name="text">
       <string>background</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="color_edges_button">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>120</y>
+       <width>71</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>edges</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="color_verticles_button">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>120</y>
+       <width>71</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>verticles</string>
      </property>
     </widget>
    </widget>
@@ -630,25 +656,7 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>961</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionOpen"/>
-    <addaction name="actionClose_File"/>
-    <addaction name="actionClose_Program"/>
-   </widget>
-   <addaction name="menuFile"/>
-  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -657,7 +665,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
    <property name="text">
     <string>Open FIle</string>

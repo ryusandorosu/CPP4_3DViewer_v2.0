@@ -20,24 +20,27 @@ macx {
 }
 
 SOURCES += \
-    GLView/glview.cpp \
-    GLView/file_opening.cpp \
-    GLView/transformation.cpp \
     ../Back/fileReaderPlus.cc \
     ../Controller/controller.cc \
     main.cpp \
+    GLView/glview.cpp \
+    GLView/file_opening.cpp \
+    GLView/transformation.cpp \
     MainWindow/mainwindow.cpp
+    MainWindow/settings.cpp
     MainWindow/setup.cpp
     MainWindow/transformation.cpp
-    MainWindow/ui.cpp
+    MainWindow/ui_buttons.cpp
+    MainWindow/ui_comboboxes.cpp
+    MainWindow/ui_commmon.cpp
 
 HEADERS += \
-    GLView/glview.h \
-    observer.h \
     ../Back/fileReaderPlus.h \
     ../Back/matrix_transformation.h \
     ../Back/model_facade.h \
     ../Controller/controller.h \
+    observer.h \
+    GLView/glview.h \
     MainWindow/mainwindow.h \
 
 FORMS += \

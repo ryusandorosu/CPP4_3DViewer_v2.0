@@ -1,10 +1,10 @@
 #include "mainwindow.h"
+#include "settings.cpp"
 #include "setup.cpp"
 #include "transformation.cpp"
-#include "ui.cpp"
-
-//#include "../GLView/glview.h"
-//#include "ui_mainwindow.h"
+#include "ui_buttons.cpp"
+#include "ui_comboboxes.cpp"
+#include "ui_common.cpp"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -15,4 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
   defaultColors();
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow() {
+  saveSettings();
+  delete ui;
+}

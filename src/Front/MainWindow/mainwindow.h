@@ -57,11 +57,16 @@ class MainWindow : public QMainWindow {
  private:
   Ui::MainWindow *ui;
   glView mView;
+  QString settingsFile = "settings.conf"; // bonus 1.4
 
   /* setup */
   void sliderSetup();
   void connectSetup();
   void statusBarUpdate();
   void defaultColors(); // bonus 1.2, 1.3
+
+  /* settings */
+  void saveSettings();  // bonus 1.4
+  //void loadSettings();  // bonus 1.4
 };
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_MAINWINDOW_MAINWINDOW_H_

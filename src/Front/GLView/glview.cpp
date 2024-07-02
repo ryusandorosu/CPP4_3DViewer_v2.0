@@ -7,9 +7,9 @@
 
 // инициализация
 void glView::initializeGL() {
+  glClearColor(255, 255, 255, 1.0);
+  glClearDepth(1.0);
   glEnable(GL_DEPTH_TEST);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
   setProjection();  // bonus 1.1
 }
 
@@ -17,16 +17,18 @@ void glView::initializeGL() {
 void glView::paintGL() {
   glClearColor(backgroundColor.redF(), backgroundColor.greenF(), backgroundColor.blueF(), backgroundColor.alphaF());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  setProjection();  // bonus 1.1
+  
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  setProjection();  // bonus 1.1
+  glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
   glEnableClientState(GL_VERTEX_ARRAY);
   setVertexMode();  // bonus 1.2
   setLineMode();    // bonus 1.2
-
-  glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
-  glDrawElements(GL_LINES, indexes_count, GL_UNSIGNED_INT, indexes_pointer);
   glDisableClientState(GL_VERTEX_ARRAY);
 }
 
@@ -45,10 +47,15 @@ void glView::setProjection() {  // bonus 1.1
 void glView::setLineMode() {  // bonus 1.2
   glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());
   glLineWidth(edgeThickness);
+
   if (line_mode_ == Dashed) {
     glEnable(GL_LINE_STIPPLE);
-    glLineStipple(1, 0x00FF);  // dashed pattern
-  } else {
+    glLineStipple(2, 0x00F0);
+  }
+
+  glDrawElements(GL_LINES, indexes_count, GL_UNSIGNED_INT, indexes_pointer);
+
+  if (line_mode_ == Dashed) { // actually Solid
     glDisable(GL_LINE_STIPPLE);
   }
 }
@@ -61,7 +68,9 @@ void glView::setVertexMode() {  // bonus 1.2
     if (vertex_mode_ == Circle) {
       glEnable(GL_POINT_SMOOTH);
     }
+
     glDrawArrays(GL_POINTS, 1, vertex_count);
+
     if (vertex_mode_ == Circle) { // actually Square
       glDisable(GL_POINT_SMOOTH);
     }

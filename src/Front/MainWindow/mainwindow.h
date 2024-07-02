@@ -67,6 +67,6 @@ class MainWindow : public QMainWindow {
 
   /* settings */
   void saveSettings();  // bonus 1.4
-  //void loadSettings();  // bonus 1.4
+  void loadSettings();  // bonus 1.4
 };
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_MAINWINDOW_MAINWINDOW_H_

@@ -29,16 +29,29 @@ void MainWindow::saveSettings() {
       "vertexColor",
       ui->graphics_verticles_color->palette().color(QPalette::Window));
 }
-/*
+
 void MainWindow::loadSettings() {
   QString settingsPath =
       QCoreApplication::applicationDirPath() + "/" + settingsFile;
   QSettings settings(settingsPath, QSettings::IniFormat);
 
   //  load combo box values
-  glView::ProjectionMode projectionIndex = settings.value("projectionIndex", 0).toInt();
-  glView::LineMode edgeIndex = settings.value("edgeIndex", 0).toInt();
-  glView::VertexMode verticleIndex = settings.value("verticleIndex", 0).toInt();
+  int projectionIndexInt = settings.value("projectionIndex", 0).toInt();
+  int edgeIndexInt = settings.value("edgeIndex", 0).toInt();
+  int verticleIndexInt = settings.value("verticleIndex", 0).toInt();
+
+  glView::ProjectionMode projectionIndex;
+  if (projectionIndexInt == 0) { projectionIndex = glView::Central; }
+  else if (projectionIndexInt == 1) { projectionIndex = glView::Parallel; }
+
+  glView::LineMode edgeIndex;
+  if (edgeIndexInt == 0) { edgeIndex = glView::Solid; }
+  else if (edgeIndexInt == 1) { edgeIndex = glView::Dashed; }
+
+  glView::VertexMode verticleIndex;
+  if (verticleIndexInt == 0) { verticleIndex = glView::Empty; }
+  else if (verticleIndexInt == 1) { verticleIndex = glView::Circle; }
+  else if (verticleIndexInt == 2) { verticleIndex = glView::Square; }
 
   ui->comboBox_projection->setCurrentIndex(projectionIndex);
   ui->comboBox_typeLine->setCurrentIndex(edgeIndex);
@@ -49,10 +62,12 @@ void MainWindow::loadSettings() {
   ui->widget->vertex_mode_ = verticleIndex;
 
   // load slider values
-  ui->edge_thickness_edit->setValue(
-      settings.value("edgeThickness", 1).toInt());
-  ui->vertex_thickness_edit->setValue(
-      settings.value("vertexThickness", 1).toInt());
+  //QVariant edgeThicknessValue = settings.value("edgeThickness", 1);
+  //QVariant vertexThicknessValue = settings.value("edgeThickness", 1);
+  QString edgeThickness = settings.value("edgeThickness", 1).toString();
+  QString vertexThickness = settings.value("edgeThickness", 1).toString();
+  ui->edge_thickness_edit->setText(edgeThickness);
+  ui->vertex_thickness_edit->setText(vertexThickness);
 
   // load colors
   QColor bgColor = settings.value("backgroundColor").value<QColor>();
@@ -84,4 +99,3 @@ void MainWindow::loadSettings() {
 
   ui->widget->update();
 }
-*/

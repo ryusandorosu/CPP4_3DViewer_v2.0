@@ -13,7 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
   setWindowTitle("3DViewer_v2.0");
   connectSetup();
   defaultColors();
-  loadSettings(); // not here
+
+  QString settingsPath = QCoreApplication::applicationDirPath() + "/" + settingsFile;
+  if (QFile::exists(settingsPath)) {
+    loadSettings();
+  }
 }
 
 MainWindow::~MainWindow() {

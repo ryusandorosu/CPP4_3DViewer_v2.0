@@ -22,10 +22,10 @@ class glView : public QOpenGLWidget, public Observer {
   enum ProjectionMode { Central, Parallel };
   enum LineMode { Solid, Dashed };
   enum VertexMode { Empty, Circle, Square };
-  ProjectionMode projection_mode_ = Central;
+  ProjectionMode projection_mode_;
   LineMode line_mode_;
   VertexMode vertex_mode_;
-  int edgeThickness = 1, verticleSize = 5;
+  int edgeThickness, verticleSize;
   QColor backgroundColor, edgeColor, verticleColor;
 
   /* glview */

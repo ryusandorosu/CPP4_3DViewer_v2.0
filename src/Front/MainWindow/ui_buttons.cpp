@@ -7,7 +7,7 @@ void MainWindow::on_toolButton_clicked() {
   ui->file_name->setText(fileName);
   statusBarUpdate();
 
-  sliderSetup();  //сброс параметров при загрузке новой модели
+  sliderDefaultSetup();  // сброс параметров при загрузке новой модели
 }
 
 void MainWindow::on_pushButton_Scale_clicked() {

@@ -60,7 +60,7 @@ class MainWindow : public QMainWindow {
   QString settingsFile = "settings.conf"; // bonus 1.4
 
   /* setup */
-  void sliderSetup();
+  void sliderDefaultSetup();
   void connectSetup();
   void statusBarUpdate();
   void defaultColors(); // bonus 1.2, 1.3

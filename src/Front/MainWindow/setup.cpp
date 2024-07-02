@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 
-void MainWindow::sliderSetup() {
+void MainWindow::sliderDefaultSetup() {
   ui->scaleEdit->setText("1");
   ui->horizontalSlider_X_rotation->setValue(0);
   ui->horizontalSlider_Y_rotation->setValue(0);
@@ -9,11 +9,11 @@ void MainWindow::sliderSetup() {
   ui->horizontalSlider_Y_moving->setValue(0);
   ui->horizontalSlider_Z_moving->setValue(0);
 
-  ui->comboBox_typeLine->activated(0);    // solid
-  ui->edge_thickness_edit->setText("1");
+  // ui->comboBox_typeLine->activated(0);    // solid
+  // ui->edge_thickness_edit->setText("1");
 
-  ui->comboBox_typeVertex->activated(0);  // empty
-  ui->vertex_thickness_edit->setText("5");
+  // ui->comboBox_typeVertex->activated(0);  // empty
+  // ui->vertex_thickness_edit->setText("5");
 }
 
 void MainWindow::connectSetup() {

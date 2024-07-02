@@ -40,15 +40,15 @@ void MainWindow::loadSettings() {
   int edgeIndexInt = settings.value("edgeIndex", 0).toInt();
   int verticleIndexInt = settings.value("verticleIndex", 0).toInt();
 
-  glView::ProjectionMode projectionIndex;
+  glView::ProjectionMode projectionIndex = glView::Central; // default
   if (projectionIndexInt == 0) { projectionIndex = glView::Central; }
   else if (projectionIndexInt == 1) { projectionIndex = glView::Parallel; }
 
-  glView::LineMode edgeIndex;
+  glView::LineMode edgeIndex = glView::Solid; // default
   if (edgeIndexInt == 0) { edgeIndex = glView::Solid; }
   else if (edgeIndexInt == 1) { edgeIndex = glView::Dashed; }
 
-  glView::VertexMode verticleIndex;
+  glView::VertexMode verticleIndex = glView::Empty; // default
   if (verticleIndexInt == 0) { verticleIndex = glView::Empty; }
   else if (verticleIndexInt == 1) { verticleIndex = glView::Circle; }
   else if (verticleIndexInt == 2) { verticleIndex = glView::Square; }
@@ -57,17 +57,23 @@ void MainWindow::loadSettings() {
   ui->comboBox_typeLine->setCurrentIndex(edgeIndex);
   ui->comboBox_typeVertex->setCurrentIndex(verticleIndex);
 
+  ui->comboBox_projection->activated(projectionIndex);
+  ui->comboBox_typeLine->activated(edgeIndex);
+  ui->comboBox_typeVertex->activated(verticleIndex);
+
   ui->widget->projection_mode_ = projectionIndex;
   ui->widget->line_mode_ = edgeIndex;
   ui->widget->vertex_mode_ = verticleIndex;
 
   // load slider values
-  //QVariant edgeThicknessValue = settings.value("edgeThickness", 1);
-  //QVariant vertexThicknessValue = settings.value("edgeThickness", 1);
-  QString edgeThickness = settings.value("edgeThickness", 1).toString();
-  QString vertexThickness = settings.value("edgeThickness", 1).toString();
-  ui->edge_thickness_edit->setText(edgeThickness);
-  ui->vertex_thickness_edit->setText(vertexThickness);
+  QString edgeThicknessQ = settings.value("edgeThickness", 1).toString();
+  QString vertexThicknessQ = settings.value("vertexThickness", 1).toString();
+
+  ui->edge_thickness_edit->setText(edgeThicknessQ);
+  ui->vertex_thickness_edit->setText(vertexThicknessQ);
+
+  ui->widget->edgeThickness = settings.value("edgeThickness", 1).toInt();
+  ui->widget->verticleSize = settings.value("vertexThickness", 1).toInt();
 
   // load colors
   QColor bgColor = settings.value("backgroundColor").value<QColor>();

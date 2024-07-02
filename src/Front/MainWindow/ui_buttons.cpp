@@ -7,7 +7,7 @@ void MainWindow::on_toolButton_clicked() {
   ui->file_name->setText(fileName);
   statusBarUpdate();
 
-  sliderDefaultSetup();  // сброс параметров при загрузке новой модели
+  defaultSliders();  // сброс параметров при загрузке новой модели
 }
 
 void MainWindow::on_pushButton_Scale_clicked() {
@@ -40,4 +40,22 @@ void MainWindow::on_pushButton_Vertex_clicked() {
     ui->widget->verticleSize = vertexSize;
     ui->widget->update();
   }
+}
+
+void MainWindow::on_background_color_button_clicked() {
+  selectAndSetColor(ui->widget->backgroundColor, ui->graphics_background_color);
+}
+void MainWindow::on_color_edges_button_clicked() {
+  selectAndSetColor(ui->widget->edgeColor, ui->graphics_color_edges);
+}
+void MainWindow::on_color_verticles_button_clicked() {
+  selectAndSetColor(ui->widget->verticleColor, ui->graphics_verticles_color);
+}
+
+void MainWindow::on_reset_values_button_clicked() {
+  if (QFile::exists(settingsFile)) {
+    QFile::remove(settingsFile);
+  }
+  defaultSettings();
+  ui->widget->update();
 }

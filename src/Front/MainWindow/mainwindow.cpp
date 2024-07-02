@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "defaults.cpp"
 #include "settings.cpp"
 #include "setup.cpp"
 #include "transformation.cpp"

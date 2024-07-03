@@ -59,3 +59,23 @@ void MainWindow::on_reset_values_button_clicked() {
   defaultSettings();
   ui->widget->update();
 }
+
+void MainWindow::on_bmp_button_clicked() {
+  QString savePath = QFileDialog::getSaveFileName(
+      this, tr("Save Image"), "", tr("BMP Image (*.bmp);;All Files (*)"));
+  if (!savePath.isEmpty()) {
+    QPixmap pixmap = ui->widget->grab();
+    pixmap.save(savePath, "BMP");
+  }
+}
+
+void MainWindow::on_jpeg_button_clicked() {
+  QString savePath = QFileDialog::getSaveFileName(
+      this, tr("Save Image"), "",
+      tr("JPEG Image (*.jpeg *.jpg);;All Files (*)"));
+  if (!savePath.isEmpty()) {
+    QPixmap pixmap = ui->widget->grab();
+    QImage img = pixmap.toImage();
+    img.save(savePath, "JPEG", 100);
+  }
+}

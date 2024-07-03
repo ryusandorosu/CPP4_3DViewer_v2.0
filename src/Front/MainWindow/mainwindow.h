@@ -37,6 +37,9 @@ class MainWindow : public QMainWindow {
 
   void on_reset_values_button_clicked();      // bonus 1.4
 
+  void on_bmp_button_clicked();         // bonus 2
+  void on_jpeg_button_clicked();        // bonus 2
+
   void selectAndSetColor(QColor& targetColor, QGraphicsView* targetLabel);  // bonus 1.2, 1.3
 
   /* ui: reacting to enter */

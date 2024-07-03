@@ -7,9 +7,9 @@
 
 // инициализация
 void glView::initializeGL() {
-  glClearColor(255, 255, 255, 1.0);
-  glClearDepth(1.0);
   glEnable(GL_DEPTH_TEST);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
   setProjection();  // bonus 1.1
 }
 
@@ -17,26 +17,18 @@ void glView::initializeGL() {
 void glView::paintGL() {
   glClearColor(backgroundColor.redF(), backgroundColor.greenF(), backgroundColor.blueF(), backgroundColor.alphaF());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  setProjection();  // bonus 1.1
-  
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
-  glEnableClientState(GL_VERTEX_ARRAY);
+  setProjection();  // bonus 1.1
   setVertexMode();  // bonus 1.2
   setLineMode();    // bonus 1.2
-  glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 void glView::setProjection() {  // bonus 1.1
   if (projection_mode_ == Parallel) {
     // -fW, fW, -fH, fH, zNear, zFar
-    glOrtho(-5, 8.3, -5, 5, -100, 100);
-    // glOrtho(-10, 10, -10, 10, 200, -200);
+    glOrtho(-5, 5, -5, 5, -100, 100);
     glTranslated(2, 0, -10);
   } else if (projection_mode_ == Central) {
     gluPerspective(45.0, 1.0, 1.0, 1000.0);
@@ -50,29 +42,37 @@ void glView::setLineMode() {  // bonus 1.2
 
   if (line_mode_ == Dashed) {
     glEnable(GL_LINE_STIPPLE);
-    glLineStipple(2, 0x00F0);
+    glLineStipple(1, 0x00FF);  // dashed pattern
+  } else {
+    glDisable(GL_LINE_STIPPLE);
   }
 
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
   glDrawElements(GL_LINES, indexes_count, GL_UNSIGNED_INT, indexes_pointer);
+  glDisableClientState(GL_VERTEX_ARRAY);
 
-  if (line_mode_ == Dashed) { // actually Solid
+  if (line_mode_ == Solid) {
     glDisable(GL_LINE_STIPPLE);
   }
 }
 
-void glView::setVertexMode() {  // bonus 1.2
+void glView::setVertexMode() {
   if (vertex_mode_ != Empty) {
     glColor3f(verticleColor.redF(), verticleColor.greenF(), verticleColor.blueF());
     glPointSize(verticleSize);
+    
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
 
     if (vertex_mode_ == Circle) {
       glEnable(GL_POINT_SMOOTH);
-    }
-
-    glDrawArrays(GL_POINTS, 1, vertex_count);
-
-    if (vertex_mode_ == Circle) { // actually Square
+      glDrawArrays(GL_POINTS, 0, vertex_count / 3);
       glDisable(GL_POINT_SMOOTH);
+    } else if (vertex_mode_ == Square) {
+      glDrawArrays(GL_POINTS, 0, vertex_count / 3);
     }
+
+    glDisableClientState(GL_VERTEX_ARRAY);
   }
 }

@@ -19,8 +19,6 @@ build-*
 *.user
 *_autogen
 
-CMakeLists.txt
-
 # Prerequisites
 *.d
 

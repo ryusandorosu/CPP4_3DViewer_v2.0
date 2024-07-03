@@ -9,7 +9,8 @@
 
 #include "../GLView/glview.h"
 #include "ui_mainwindow.h"
-#include "../resources/QtGifImage/src/gifimage/qgifimage.h"
+#include "../resources/QtGifImageCMake/include/gifimage/qgifimage.h"
+// #include "../resources/QtGifImage/src/gifimage/qgifimage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

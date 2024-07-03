@@ -1,11 +1,12 @@
 #include "mainwindow.h"
-#include "defaults.cpp"
-#include "settings.cpp"
-#include "setup.cpp"
-#include "ui_bonuses.cpp"
-#include "ui_buttons.cpp"
-#include "ui_comboboxes.cpp"
-#include "ui_sliders.cpp"
+/* comment these when cmake is used: */
+// #include "defaults.cpp"
+// #include "settings.cpp"
+// #include "setup.cpp"
+// #include "ui_bonuses.cpp"
+// #include "ui_buttons.cpp"
+// #include "ui_comboboxes.cpp"
+// #include "ui_sliders.cpp"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {

@@ -50,6 +50,10 @@ void MainWindow::save_gif() {
       gif.addFrame(image);
     }
 
+    QFileInfo fileInfo(gifFilePath);
+    if (fileInfo.suffix().isEmpty()) {
+      gifFilePath += ".gif";
+    }
     gif.save(gifFilePath);
 
     mkr_image.clear();  // Очищаем вектор кадров

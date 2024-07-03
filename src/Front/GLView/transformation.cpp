@@ -1,5 +1,12 @@
 #include "glview.h"
 
+void glView::scaleChange(double scaleLocal) {
+  controller::scaleMatrix(vertex_pointer, vertex_count, scale);
+  scale = 1 / scaleLocal;
+  controller::scaleMatrix(vertex_pointer, vertex_count, scaleLocal);
+  update();
+}
+
 void glView::turnX(double xDeg) {
   RotateTransformation rotateX(0);
   controller::xturnMatrix(vertex_pointer, vertex_count, xdegree);
@@ -48,10 +55,8 @@ void glView::shiftZ(double zshiftLocal) {
   update();
 }
 
-void glView::scaleChange(double scaleLocal) {
-  // ScaleTransformation scaleT;
-  controller::scaleMatrix(vertex_pointer, vertex_count, scale);
-  scale = 1 / scaleLocal;
-  controller::scaleMatrix(vertex_pointer, vertex_count, scaleLocal);
-  update();
+/* setters */
+double glView::setScale(double scaleLocal) {
+  scale = scaleLocal;
+  return scale;
 }

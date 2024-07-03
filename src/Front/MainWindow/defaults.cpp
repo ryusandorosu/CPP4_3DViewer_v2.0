@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 
 void MainWindow::defaultSliders() {
-  ui->scaleEdit->setText("1");
+  double scaleDefault = 1;
+  ui->scaleEdit->setText(QString::number(scaleDefault));
+  ui->widget->setScale(scaleDefault);
+
   ui->horizontalSlider_X_rotation->setValue(0);
   ui->horizontalSlider_Y_rotation->setValue(0);
   ui->horizontalSlider_Z_rotation->setValue(0);
@@ -11,6 +14,7 @@ void MainWindow::defaultSliders() {
 }
 
 void MainWindow::defaultSettings() {
+  defaultSliders();
   defaultColors();
   
   glView::ProjectionMode projectionDefault = glView::Central;

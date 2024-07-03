@@ -30,10 +30,10 @@ SOURCES += \
     MainWindow/defaults.cpp \
     MainWindow/settings.cpp \
     MainWindow/setup.cpp \
-    MainWindow/transformation.cpp \
     MainWindow/ui_buttons.cpp \
     MainWindow/ui_comboboxes.cpp \
-    MainWindow/ui_common.cpp
+    MainWindow/ui_common.cpp \
+    MainWindow/ui_sliders.cpp
 
 HEADERS += \
     ../Back/fileReaderPlus.h \

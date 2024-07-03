@@ -38,6 +38,8 @@ class glView : public QOpenGLWidget, public Observer {
 
   /* transformation */
   void scaleChange(double scaleLocal);
+  double getScale() const { return scale; }
+  double setScale(double scaleLocal);
 
   void turnX(double xDeg);
   void turnY(double yDeg);
@@ -61,13 +63,15 @@ class glView : public QOpenGLWidget, public Observer {
 
  private:
   /* variables */
-  double scale = 1;
-  double xdegree, ydegree, zdegree = 0;
-  double xshift, yshift, zshift = 0;
   double *vertex_pointer = NULL;
   unsigned int *indexes_pointer = NULL;
   int vertex_count, indexes_count = 0;
   char *filename = NULL;
+
+  double scale = 1;
+  double xdegree, ydegree, zdegree = 0;
+  double xshift, yshift, zshift = 0;
+  void resetTransformations();
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_GLVIEW_GLVIEW_H_

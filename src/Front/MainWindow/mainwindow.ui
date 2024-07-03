@@ -281,7 +281,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QToolButton" name="toolButton">
+   <widget class="QToolButton" name="openButton">
     <property name="geometry">
      <rect>
       <x>690</x>

@@ -5,12 +5,20 @@ void MainWindow::defaultSliders() {
   ui->scaleEdit->setText(QString::number(scaleDefault));
   ui->widget->setScale(scaleDefault);
 
-  ui->horizontalSlider_X_rotation->setValue(0);
-  ui->horizontalSlider_Y_rotation->setValue(0);
-  ui->horizontalSlider_Z_rotation->setValue(0);
-  ui->horizontalSlider_X_moving->setValue(0);
-  ui->horizontalSlider_Y_moving->setValue(0);
-  ui->horizontalSlider_Z_moving->setValue(0);
+  double defaultValue = 0;
+  ui->horizontalSlider_X_rotation->setValue(defaultValue);
+  ui->horizontalSlider_Y_rotation->setValue(defaultValue);
+  ui->horizontalSlider_Z_rotation->setValue(defaultValue);
+  ui->horizontalSlider_X_moving->setValue(defaultValue);
+  ui->horizontalSlider_Y_moving->setValue(defaultValue);
+  ui->horizontalSlider_Z_moving->setValue(defaultValue);
+
+  ui->widget->setTurnX(defaultValue);
+  ui->widget->setTurnY(defaultValue);
+  ui->widget->setTurnZ(defaultValue);
+  ui->widget->setShiftX(defaultValue);
+  ui->widget->setShiftY(defaultValue);
+  ui->widget->setShiftZ(defaultValue);
 }
 
 void MainWindow::defaultSettings() {

@@ -8,6 +8,7 @@
 #include <QMouseEvent>
 #include <QOpenGLWidget>
 #include <QTimer>
+#include <QDebug>
 
 #include "../../Back/model_facade.h"
 #include "../../Controller/controller.h"
@@ -28,6 +29,12 @@ class glView : public QOpenGLWidget, public Observer {
   int edgeThickness, verticleSize;
   QColor backgroundColor, edgeColor, verticleColor;
 
+  /* file_opening */
+  void openFile(QString filenameLocal);
+  void deletePointers();
+  int vertexCountReturn() { return vertex_count / 3; };
+  int indexesCountReturn() { return indexes_count / 2; };
+
   /* glview */
   void initializeGL() override;
   void resizeGL(int w, int h) override { glViewport(0, 0, w, h); };
@@ -38,8 +45,6 @@ class glView : public QOpenGLWidget, public Observer {
 
   /* transformation */
   void scaleChange(double scaleLocal);
-  double getScale() const { return scale; }
-  double setScale(double scaleLocal);
 
   void turnX(double xDeg);
   void turnY(double yDeg);
@@ -49,11 +54,16 @@ class glView : public QOpenGLWidget, public Observer {
   void shiftY(double yshiftLocal);
   void shiftZ(double zshiftLocal);
 
-  /* file_opening */
-  void openFile(QString filenameLocal);
-  void deletePointers();
-  int vertexCountReturn() { return vertex_count / 3; };
-  int indexesCountReturn() { return indexes_count / 2; };
+  /* transformation setters: to restore default values */
+  double setScale(double scaleLocal);
+
+  double setTurnX(double xDeg);
+  double setTurnY(double yDeg);
+  double setTurnZ(double zDeg);
+
+  double setShiftX(double xshiftLocal);
+  double setShiftY(double yshiftLocal);
+  double setShiftZ(double zshiftLocal);
 
   // обновление рендера
   void update() override { QOpenGLWidget::update(); };
@@ -71,7 +81,6 @@ class glView : public QOpenGLWidget, public Observer {
   double scale = 1;
   double xdegree, ydegree, zdegree = 0;
   double xshift, yshift, zshift = 0;
-  void resetTransformations();
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_GLVIEW_GLVIEW_H_

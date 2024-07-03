@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 
-void MainWindow::on_toolButton_clicked() {
+void MainWindow::on_openButton_clicked() {
+  defaultSliders();
+
   QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("*"));
   ui->widget->openFile(fileName);
-
   ui->file_name->setText(fileName);
-  statusBarUpdate();
 
-  defaultSliders();  // сброс параметров при загрузке новой модели
+  statusBarUpdate();
 }
 
 void MainWindow::on_pushButton_Scale_clicked() {

@@ -20,7 +20,6 @@ void glView::openFile(QString filenameLocal) {
   indexes_pointer = fArray;
   indexes_count = fCount * 2;
   vertex_count = vCount;
-  resetTransformations(); // temporary
   update();
 }
 
@@ -31,15 +30,4 @@ void glView::deletePointers() {
   if (indexes_pointer != NULL) {
     delete[] indexes_pointer;
   }
-}
-
-void glView::resetTransformations() {
-  // will need to move these to defaults:
-  xdegree = 0;
-  ydegree = 0;
-  zdegree = 0;
-  xshift = 0;
-  yshift = 0;
-  zshift = 0;
-  //scale = 1;
 }

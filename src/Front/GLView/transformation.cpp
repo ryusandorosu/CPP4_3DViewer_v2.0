@@ -60,3 +60,29 @@ double glView::setScale(double scaleLocal) {
   scale = scaleLocal;
   return scale;
 }
+
+double glView::setTurnX(double xDeg) {
+  xdegree = xDeg;
+  return xdegree;
+}
+double glView::setTurnY(double yDeg) {
+  ydegree = yDeg;
+  return ydegree;
+}
+double glView::setTurnZ(double zDeg) {
+  zdegree = zDeg;
+  return zdegree;
+}
+
+double glView::setShiftX(double xshiftLocal) {
+  xshift = xshiftLocal;
+  return xshift;
+}
+double glView::setShiftY(double yshiftLocal) {
+  yshift = yshiftLocal;
+  return yshift;
+}
+double glView::setShiftZ(double zshiftLocal) {
+  zshift = zshiftLocal;
+  return zshift;
+}

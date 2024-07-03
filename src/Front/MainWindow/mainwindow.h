@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow {
 
  private slots:
   /* ui: buttons */
-  void on_toolButton_clicked();
+  void on_openButton_clicked();
 
   void on_pushButton_Scale_clicked();
   void on_pushButton_Edge_clicked();    // bonus 1.2

@@ -50,11 +50,7 @@ void MainWindow::save_gif() {
       gif.addFrame(image);
     }
 
-    if (gif.save(gifFilePath)) {
-      qDebug() << "GIF saved successfully.";
-    } else {
-      qDebug() << "Failed to save GIF.";
-    }
+    gif.save(gifFilePath);
 
     mkr_image.clear();  // Очищаем вектор кадров
     // Сбрасываем:

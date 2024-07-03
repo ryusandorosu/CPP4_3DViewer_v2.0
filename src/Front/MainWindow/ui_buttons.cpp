@@ -101,7 +101,6 @@ void MainWindow::on_gif_button_clicked() {
   flag_record = 1;
   ui->rec_button->setStyleSheet("background-color:#FF0000");
 
-  connect(&timer_for_gif, &QTimer::timeout, this, &MainWindow::create_screen);
   timer_for_gif.start(1000);  // 1 секунда
   create_screen();
 }

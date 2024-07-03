@@ -9,6 +9,10 @@ void MainWindow::connectSetup() {
 
   // verticle parameters
   connect(ui->vertex_thickness_edit, &QLineEdit::returnPressed, this, &MainWindow::on_vertexEdit_returnPressed);
+
+  // gif recording
+  connect(ui->gif_button, &QPushButton::clicked, this, &MainWindow::on_gif_button_clicked);
+  connect(&timer_for_gif, &QTimer::timeout, this, &MainWindow::create_screen);
 }
 
 void MainWindow::statusBarUpdate() {

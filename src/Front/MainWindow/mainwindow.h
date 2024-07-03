@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QMainWindow>
 #include <QtWidgets>
+#include <QDebug>
 
 #include "../GLView/glview.h"
 #include "ui_mainwindow.h"

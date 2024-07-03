@@ -1,4 +1,5 @@
 QT       += core gui opengl
+include(resources/QTGifimage/src/gifimage/qtgifimage.pri)
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 greaterThan(QT_MAJOR_VERSION, 5): QT += openglwidgets
@@ -8,6 +9,9 @@ CONFIG += c++17
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+# INCLUDEPATH += path/to/QtGifImage/src
+# LIBS += -Lpath/to/QtGifImage/lib -lqgifimage
 
 unix:!macx {
     message("Building for Linux")
@@ -30,9 +34,9 @@ SOURCES += \
     MainWindow/defaults.cpp \
     MainWindow/settings.cpp \
     MainWindow/setup.cpp \
+    MainWindow/ui_bonuses.cpp \
     MainWindow/ui_buttons.cpp \
     MainWindow/ui_comboboxes.cpp \
-    MainWindow/ui_common.cpp \
     MainWindow/ui_sliders.cpp
 
 HEADERS += \

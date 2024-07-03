@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 
+/* main button */
 void MainWindow::on_openButton_clicked() {
   defaultSliders();
 
@@ -42,6 +43,7 @@ void MainWindow::on_pushButton_Vertex_clicked() {
   }
 }
 
+/* reacting to enter */
 void MainWindow::on_background_color_button_clicked() {
   selectAndSetColor(ui->widget->backgroundColor, ui->graphics_background_color);
 }
@@ -52,6 +54,7 @@ void MainWindow::on_color_verticles_button_clicked() {
   selectAndSetColor(ui->widget->verticleColor, ui->graphics_verticles_color);
 }
 
+/* reset all settings */
 void MainWindow::on_reset_values_button_clicked() {
   if (QFile::exists(settingsFile)) {
     QFile::remove(settingsFile);
@@ -59,6 +62,8 @@ void MainWindow::on_reset_values_button_clicked() {
   defaultSettings();
   ui->widget->update();
 }
+
+/* screenshots and screencast */
 
 void MainWindow::on_bmp_button_clicked() {
   QString savePath = QFileDialog::getSaveFileName(
@@ -90,4 +95,12 @@ void MainWindow::on_jpeg_button_clicked() {
     QImage img = pixmap.toImage();
     img.save(savePath, "JPEG", 100);
   }
+}
+
+void MainWindow::on_gif_button_clicked() {
+  flag_record = 1;
+  ui->rec_button->setStyleSheet("background-color:#FF0000");
+
+  timer_for_gif.start(1000);  // 1 секунда
+  create_screen();
 }

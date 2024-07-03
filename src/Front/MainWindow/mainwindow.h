@@ -9,6 +9,7 @@
 
 #include "../GLView/glview.h"
 #include "ui_mainwindow.h"
+#include "../resources/QtGifImage/src/gifimage/qgifimage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -39,10 +40,14 @@ class MainWindow : public QMainWindow {
 
   void on_bmp_button_clicked();         // bonus 2
   void on_jpeg_button_clicked();        // bonus 2
+  void on_gif_button_clicked();         // bonus 2
 
   void selectAndSetColor(QColor& targetColor, QGraphicsView* targetLabel);  // bonus 1.2, 1.3
 
-  /* ui: reacting to enter */
+  void create_screen();
+  void save_gif();
+
+  /* ui: buttons - reacting to enter */
   void on_scaleEdit_returnPressed() { on_pushButton_Scale_clicked(); };
   void on_edgeEdit_returnPressed() { on_pushButton_Edge_clicked(); };
   void on_vertexEdit_returnPressed() { on_pushButton_Vertex_clicked(); };
@@ -52,7 +57,7 @@ class MainWindow : public QMainWindow {
   void on_comboBox_typeLine_activated(int index);   // bonus 1.2
   void on_comboBox_typeVertex_activated(int index);   // bonus 1.2
 
-  /* transformation */
+  /* ui: sliders - transformation */
   void on_horizontalSlider_X_rotation_valueChanged(int value);
   void on_horizontalSlider_Y_rotation_valueChanged(int value);
   void on_horizontalSlider_Z_rotation_valueChanged(int value);
@@ -65,6 +70,12 @@ class MainWindow : public QMainWindow {
   Ui::MainWindow *ui;
   glView mView;
   QString settingsFile = "settings.conf"; // bonus 1.4
+
+  /* git recording */
+  int flag_record = 0;  // запись (1 - включена, 0 - выключена)
+  double elapsedTime = 0;
+  QVector<QImage> mkr_image;  // The vector for storing frames
+  QTimer timer_for_gif;       // Таймер
 
   /* setup */
   void connectSetup();

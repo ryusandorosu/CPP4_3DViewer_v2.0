@@ -27,57 +27,64 @@ if(APPLE)
 elseif(UNIX)
     message("Building for Linux")
     find_package(OpenGL REQUIRED)
-    set(PLATFORM_LIBS GLU)
+    find_library(GLU_LIBRARY GLU)
+    if(NOT GLU_LIBRARY)
+        message(FATAL_ERROR "GLU library not found.")
+    endif()
+    set(PLATFORM_LIBS OpenGL::GL ${GLU_LIBRARY})
 endif()
+
+# Output directory for the built executable
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../build)
 
 # Source files
 set(PROJECT_SOURCES
-    ../Back/fileReaderPlus.cc
-    ../Controller/controller.cc
-    main.cpp
-    GLView/glview.cpp
-    GLView/file_opening.cpp
-    GLView/transformation.cpp
-    MainWindow/mainwindow.cpp
-    MainWindow/defaults.cpp
-    MainWindow/settings.cpp
-    MainWindow/setup.cpp
-    MainWindow/ui_bonuses.cpp
-    MainWindow/ui_buttons.cpp
-    MainWindow/ui_comboboxes.cpp
-    MainWindow/ui_sliders.cpp
-)
+        ../Back/fileReaderPlus.cc
+        ../Controller/controller.cc
+        main.cpp
+        GLView/glview.cpp
+        GLView/file_opening.cpp
+        GLView/transformation.cpp
+        MainWindow/mainwindow.cpp
+        MainWindow/defaults.cpp
+        MainWindow/settings.cpp
+        MainWindow/setup.cpp
+        MainWindow/ui_bonuses.cpp
+        MainWindow/ui_buttons.cpp
+        MainWindow/ui_comboboxes.cpp
+        MainWindow/ui_sliders.cpp
+        )
 
 # Header files
 set(PROJECT_HEADERS
-    ../Back/fileReaderPlus.h
-    ../Back/matrix_transformation.h
-    ../Back/model_facade.h
-    ../Controller/controller.h
-    observer.h
-    GLView/glview.h
-    MainWindow/mainwindow.h
-)
+        ../Back/fileReaderPlus.h
+        ../Back/matrix_transformation.h
+        ../Back/model_facade.h
+        ../Controller/controller.h
+        observer.h
+        GLView/glview.h
+        MainWindow/mainwindow.h
+        )
 
 # UI files
 set(PROJECT_FORMS
-    MainWindow/mainwindow.ui
-)
+        MainWindow/mainwindow.ui
+        )
 
 # Add executable
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(3DViewer
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
-        ${PROJECT_HEADERS}
-        ${PROJECT_FORMS}
-    )
+            MANUAL_FINALIZATION
+            ${PROJECT_SOURCES}
+            ${PROJECT_HEADERS}
+            ${PROJECT_FORMS}
+            )
 else()
     add_executable(3DViewer
-        ${PROJECT_SOURCES}
-        ${PROJECT_HEADERS}
-        ${PROJECT_FORMS}
-    )
+            ${PROJECT_SOURCES}
+            ${PROJECT_HEADERS}
+            ${PROJECT_FORMS}
+            )
 endif()
 
 # Include and link QtGifImage library
@@ -90,16 +97,16 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 endif()
 
 set_target_properties(3DViewer PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
+        MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+        MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+        MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+        MACOSX_BUNDLE TRUE
+        WIN32_EXECUTABLE TRUE
+        )
 
 # Platform-specific settings
 if(UNIX AND NOT APPLE)
-    target_link_libraries(3DViewer PRIVATE GLU)
+    target_link_libraries(3DViewer PRIVATE ${PLATFORM_LIBS})
 elseif(APPLE)
     target_link_libraries(3DViewer PRIVATE "-framework OpenGL" "-framework GLUT")
 endif()

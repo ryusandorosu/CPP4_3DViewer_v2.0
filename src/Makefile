@@ -1,4 +1,4 @@
-# Имя исполняемого файла
+# Имя статической библиотеки
 TARGET = viewer.a
 
 # Компилятор и флаги
@@ -19,16 +19,25 @@ all: clean $(TARGET) test
 
 install: uninstall
 	mkdir -p build
-	cd build/ && qmake ../Front/Front.pro && make
+	# Используем qmake:
+	#cd build/ && qmake ../Front/Front.pro && make
+	# Используем cmake:
+	cd Front/ && cmake CMakeLists.txt && make
 
 uninstall:
 	rm -rf build
 
 run:
 ifeq ($(OS), Linux)
-	./build/Front
+	# Используем qmake:
+	#./build/Front
+	# Используем cmake:
+	./build/3DViewer
 else
-	./build/Front.app/Contents/MacOS/Front
+	# Используем qmake:
+	#./build/Front.app/Contents/MacOS/Front
+	# Используем cmake:
+	./build/Front.app/Contents/MacOS/3DViewer
 endif
 
 dist:
@@ -42,6 +51,13 @@ clean: cleantest
 	rm -rf *.a
 	rm -rf */*.o
 	rm -rf */*.a
+	rm -rf */Makefile
+	rm -rf */*.conf
+	rm -rf */*.cmake
+	rm -rf */*_autogen
+	rm -rf */CMakeFiles
+	rm -rf */CMakeCache.txt
+	rm -rf */resources/*/Makefile
 
 cleantest:
 	rm -rf *.gcda

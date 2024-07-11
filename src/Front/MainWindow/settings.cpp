@@ -11,7 +11,6 @@ void MainWindow::saveSettings() {
 
   // Save combo box indexes
   settings.setValue("projectionIndex", ui->comboBox_projection->currentIndex());
-  // qDebug() << ui->comboBox_projection->currentIndex();
   settings.setValue("edgeIndex", ui->comboBox_typeLine->currentIndex());
   settings.setValue("verticleIndex", ui->comboBox_typeVertex->currentIndex());
 

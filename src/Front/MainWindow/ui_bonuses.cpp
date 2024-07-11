@@ -21,7 +21,7 @@ void MainWindow::selectAndSetColor(QColor& targetColor, QGraphicsView* targetLab
 /* gif animation */
 
 void MainWindow::create_screen() {
-  if (flag_record == 0) {
+  if (flag_record == false) {
     return;
   }
 
@@ -58,7 +58,7 @@ void MainWindow::save_gif() {
 
     mkr_image.clear();  // Очищаем вектор кадров
     // Сбрасываем:
-    flag_record = 0;
+    flag_record = false;
     elapsedTime = 0;
     ui->rec_button->setStyleSheet("");  // reset
   }

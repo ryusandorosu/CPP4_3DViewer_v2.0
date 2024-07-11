@@ -3,61 +3,57 @@ TARGET = viewer.a
 
 # Компилятор и флаги
 CC = g++
-CFLAGS = -std=c++11 -Wall -Werror -Wextra
+CFLAGS = -std=c++17 -Wall -Werror -Wextra
+COMPILE = $(CC) $(CFLAGS)
 
 # Исходные файлы
 SRC = Back/fileReaderPlus.cc
+TST = testDir/test.cc
 
 # Объектные файлы
-OBJS = $(SRC:.cc=.o)
+OBJS = *.o
 
 # Определение системы сборки
 OS=$(shell uname -s)
 
 # Правила
-all: clean $(TARGET) test
+all: clean install run
 
 install: uninstall
 	mkdir -p build
-	# Используем qmake:
-	#cd build/ && qmake ../Front/Front.pro && make
-	# Используем cmake:
 	cd Front/ && cmake CMakeLists.txt && make
 
 uninstall:
-	rm -rf build
+	rm -rf build dist_calc_qt.tgz
 
 run:
 ifeq ($(OS), Linux)
-	# Используем qmake:
-	#./build/Front
-	# Используем cmake:
 	./build/3DViewer
 else
-	# Используем qmake:
-	#./build/Front.app/Contents/MacOS/Front
-	# Используем cmake:
-	./build/Front.app/Contents/MacOS/3DViewer
+	./build/3DViewer.app/Contents/MacOS/3DViewer
 endif
 
 dist:
-	tar cvzf dist_calc_qt.tgz build/
+	mkdir temp_arch
+	cp -r Back Controller Front testDir Makefile temp_arch
+	tar cvzf dist_calc_qt.tgz temp_arch/
+	rm -rf temp_arch
 
 dvi:
 	open ../README_RUS.md
 
 clean: cleantest
-	rm -rf *.o
-	rm -rf *.a
-	rm -rf */*.o
-	rm -rf */*.a
-	rm -rf */Makefile
+	rm -rf *.o */*.o
+	rm -rf *.a */*.a
+	rm -rf */Makefile */resources/*/Makefile
 	rm -rf */*.conf
-	rm -rf */*.cmake
-	rm -rf */*_autogen
-	rm -rf */CMakeFiles
+	rm -rf */.qt
+	rm -rf */*.cmake */resources/*/*.cmake
+	rm -rf */*_autogen */resources/*/*_autogen
+	rm -rf */CMakeFiles */resources/*/CMakeFiles
 	rm -rf */CMakeCache.txt
-	rm -rf */resources/*/Makefile
+	rm -rf */resources/*/*.dylib
+	rm -rf temp_arch
 
 cleantest:
 	rm -rf *.gcda
@@ -67,19 +63,22 @@ cleantest:
 	rm -rf tests
 	rm -rf report
 
-$(TARGET): $(OBJS)
-	ar rcs $@ $^
+$(TARGET):
+	$(COMPILE) -c $(SRC)
+	ar rcs $(TARGET) $(OBJS)
+	rm -rf $(OBJS)
 
 test: cleantest $(TARGET)
-	$(CC) $(CFLAGS) -I/usr/local/include -L/usr/local/lib $(SRC) ./testDir/test.cc -o test -lgtest -lgtest_main -pthread
+	$(COMPILE) -I/usr/local/include -L/usr/local/lib $(SRC) ./$(TST) -o test -lgtest -lgtest_main -pthread
 	./test
 
 gcov_report: cleantest $(TARGET)
-	$(CC) $(CFLAGS) -fprofile-arcs -ftest-coverage $(SRC) ./testDir/test.cc -o tests -lgtest -lgtest_main -pthread
+	$(COMPILE) -fprofile-arcs -ftest-coverage $(SRC) ./$(TST) -o tests -lgtest -lgtest_main -pthread
 	./tests
-	lcov -t "stest" -o s21_test.info --no-external -c -d .
+	lcov -t "tests" -o s21_test.info --no-external -c -d . --ignore-errors inconsistent,format,usage
 	genhtml -o report s21_test.info
 	open ./report/index.html
+	make cleantest
 
 clang-format:
 	clang-format --style=Google -i */*.cc */*.h

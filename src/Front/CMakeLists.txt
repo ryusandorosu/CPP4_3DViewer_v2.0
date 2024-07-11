@@ -88,7 +88,7 @@ else()
 endif()
 
 # Include and link QtGifImage library
-add_subdirectory(resources/QtGifImageCMake)
+add_subdirectory(resources/QtGifImage)
 target_link_libraries(3DViewer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::OpenGL QtGifImage ${PLATFORM_LIBS})
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

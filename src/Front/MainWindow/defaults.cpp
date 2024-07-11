@@ -13,7 +13,7 @@ void MainWindow::defaultSliders() {
   ui->horizontalSlider_Y_moving->setValue(defaultValue);
   ui->horizontalSlider_Z_moving->setValue(defaultValue);
 
-  ui->widget->setTurnX(defaultValue); // not working again?
+  ui->widget->setTurnX(defaultValue);
   ui->widget->setTurnY(defaultValue);
   ui->widget->setTurnZ(defaultValue);
   ui->widget->setShiftX(defaultValue);

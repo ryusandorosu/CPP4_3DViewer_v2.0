@@ -98,7 +98,7 @@ void MainWindow::on_jpeg_button_clicked() {
 }
 
 void MainWindow::on_gif_button_clicked() {
-  flag_record = 1;
+  flag_record = true;
   ui->rec_button->setStyleSheet("background-color:#FF0000");
 
   timer_for_gif.start(1000);  // 1 секунда

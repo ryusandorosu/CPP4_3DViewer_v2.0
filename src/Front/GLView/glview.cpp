@@ -10,7 +10,7 @@ void glView::initializeGL() {
   glEnable(GL_DEPTH_TEST);
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  setProjection();  // bonus 1.1
+  setProjection();
 }
 
 // отрисовка
@@ -20,12 +20,12 @@ void glView::paintGL() {
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  setProjection();  // bonus 1.1
-  setVertexMode();  // bonus 1.2
-  setLineMode();    // bonus 1.2
+  setProjection();
+  setVertexMode();
+  setLineMode();
 }
 
-void glView::setProjection() {  // bonus 1.1
+void glView::setProjection() {
   if (projection_mode_ == Parallel) {
     // -fW, fW, -fH, fH, zNear, zFar
     glOrtho(-5, 5, -5, 5, -100, 100);
@@ -36,7 +36,7 @@ void glView::setProjection() {  // bonus 1.1
   }
 }
 
-void glView::setLineMode() {  // bonus 1.2
+void glView::setLineMode() {
   glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());
   glLineWidth(edgeThickness);
 

@@ -8,7 +8,6 @@
 #include <QMouseEvent>
 #include <QOpenGLWidget>
 #include <QTimer>
-#include <QDebug>
 
 #include "../../Back/model_facade.h"
 #include "../../Controller/controller.h"

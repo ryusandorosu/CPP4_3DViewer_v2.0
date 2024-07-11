@@ -1,57 +1,48 @@
-Documentation: http://qtgifimage.debao.me
+# QtGifImage CMake
 
-Qt Gif Image is a Qt library that can read and write Gif files.
- 
-## Getting Started
+---
 
-### Usage(1): Use Qt Gif Image as Qt5's addon module
+The project was ported to the CMake build system as Shared library
 
-* Download the source code.
+---
 
-* Put the source code in any directory you like. At the toplevel directory run
+## Install and Configuration
 
-**Note**: Perl is needed.
+1. Add git submodule
 
-```
-    qmake
-    make
-    make install
+```shell
+mkdir third_party
+cd third_party && git submodule add https://github.com/tonitaga/QtGifImage.git
 ```
 
-The library, the header files, and others will be installed to your system.
+2. The project tree must be
 
-* Add following line to your qmake's project file:
-
-```
-    QT += gifimage
-```
-
-* Then, using Qt Gif Image in your code
-
-### Usage(2): Use source code directly
-
-The package contains a **qtgifimage.pri** file that allows you to integrate the component into applications that use qmake for the build step.
-
-* Download the source code.
-
-* Put the source code in any directory you like. For example, 3rdparty:
-
-```
-    |-- project.pro
-    |-- ....
-    |-- 3rdparty\
-    |     |-- qtgifimage\
-    |     |
+```tree
+|   CMakeLists.txt
++---src
+|   |   main.cc
+|   |   
+|   \---view
+|           files     
+\---third_party
 ```
 
-* Add following line to your qmake project file:
+3. Configure root CMakeLists.txt
+
+```cmake
+
+add_subdirectory(third_party/QtGifImage)
+
+set(LINK_LIBRARIES
+        QtGifImage::QtGifImage
+        # other link libraries
+        # For example:
+        Qt${QT_VERSION_MAJOR}::Widgets
+)
+
+# ... QT generated CMakeLists.txt content
+# after add_executable 
+
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LINK_LIBRARIES})
 
 ```
-    include(3rdparty/qtgifimage/src/gifimage/qtgifimage.pri)
-```
-
-* Then, using Qt Gif Image in your code
-
-## References
-
-* http://giflib.sourceforge.net/intro.html

@@ -38,9 +38,9 @@ class glView : public QOpenGLWidget, public Observer {
   void initializeGL() override;
   void resizeGL(int w, int h) override { glViewport(0, 0, w, h); };
   void paintGL() override;
-  void setProjection();  // bonus 1.1
-  void setLineMode();    // bonus 1.2
-  void setVertexMode();  // bonus 1.2
+  void setProjection();
+  void setLineMode();
+  void setVertexMode();
 
   /* transformation */
   void scaleChange(double scaleLocal);
@@ -66,9 +66,6 @@ class glView : public QOpenGLWidget, public Observer {
 
   // обновление рендера
   void update() override { QOpenGLWidget::update(); };
-
- protected:
-  // void wheelEvent(QWheelEvent *event) override;
 
  private:
   /* variables */

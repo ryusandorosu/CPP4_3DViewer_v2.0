@@ -18,6 +18,8 @@ CMakeFiles
 build-*
 *.user
 *_autogen
+src/Front/Makefile
+src/Front/resources/*/Makefile
 
 # Prerequisites
 *.d

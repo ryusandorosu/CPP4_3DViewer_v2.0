@@ -26,10 +26,10 @@ void MainWindow::create_screen() {
     return;
   }
 
-  QPixmap pixmap = ui->widget->grab();  // скриншот
+  QPixmap pixmap = ui->widget->grab();
   QImage image = pixmap.toImage();
 
-  mkr_image.push_back(image);  // Добавляем скриншот в вектор кадров
+  mkr_image.push_back(image);
 
   elapsedTime += 1;
 
@@ -44,9 +44,8 @@ void MainWindow::save_gif() {
                                                      tr("GIF Files (*.gif)"));
 
   if (!gifFilePath.isEmpty()) {
-    QGifImage gif(QSize(640, 480));  // Создаем объект GIF анимации
+    QGifImage gif(QSize(640, 480));
 
-    // Добавляем кадры из вектора mkr_image
     for (const QImage& image : mkr_image) {
       gif.addFrame(image);
     }
@@ -57,10 +56,9 @@ void MainWindow::save_gif() {
     }
     gif.save(gifFilePath);
 
-    mkr_image.clear();  // Очищаем вектор кадров
-    // Сбрасываем:
+    mkr_image.clear();
     flag_record = false;
     elapsedTime = 0;
-    ui->rec_button->setStyleSheet("");  // reset
+    ui->rec_button->setStyleSheet("");
   }
 }

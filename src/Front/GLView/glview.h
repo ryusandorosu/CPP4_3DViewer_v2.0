@@ -22,9 +22,9 @@ class glView : public QOpenGLWidget, public Observer {
   enum ProjectionMode { Central, Parallel };
   enum LineMode { Solid, Dashed };
   enum VertexMode { Empty, Circle, Square };
-  ProjectionMode projection_mode_;
-  LineMode line_mode_;
-  VertexMode vertex_mode_;
+  ProjectionMode projection_mode;
+  LineMode line_mode;
+  VertexMode vertex_mode;
   int edgeThickness, verticleSize;
   QColor backgroundColor, edgeColor, verticleColor;
 
@@ -75,8 +75,8 @@ class glView : public QOpenGLWidget, public Observer {
   char *filename = NULL;
 
   double scale = 1;
-  double xdegree, ydegree, zdegree = 0;
-  double xshift, yshift, zshift = 0;
+  double xdegree = 0, ydegree = 0, zdegree = 0;
+  double xshift = 0, yshift = 0, zshift = 0;
 };
 
 #endif  // CPP4_3DVIEWER_V2_0_2_SRC_FRONT_GLVIEW_GLVIEW_H_

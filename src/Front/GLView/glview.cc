@@ -27,11 +27,11 @@ void glView::paintGL() {
 }
 
 void glView::setProjection() {
-  if (projection_mode_ == Parallel) {
+  if (projection_mode == Parallel) {
     // -fW, fW, -fH, fH, zNear, zFar
     glOrtho(-5, 5, -5, 5, -100, 100);
     glTranslated(2, 0, -10);
-  } else if (projection_mode_ == Central) {
+  } else if (projection_mode == Central) {
     gluPerspective(45.0, 1.0, 1.0, 1000.0);
     glTranslated(0, 0, -10);
   }
@@ -41,7 +41,7 @@ void glView::setLineMode() {
   glColor3f(edgeColor.redF(), edgeColor.greenF(), edgeColor.blueF());
   glLineWidth(edgeThickness);
 
-  if (line_mode_ == Dashed) {
+  if (line_mode == Dashed) {
     glEnable(GL_LINE_STIPPLE);
     glLineStipple(1, 0x00FF);  // dashed pattern
   } else {
@@ -53,13 +53,13 @@ void glView::setLineMode() {
   glDrawElements(GL_LINES, indexes_count, GL_UNSIGNED_INT, indexes_pointer);
   glDisableClientState(GL_VERTEX_ARRAY);
 
-  if (line_mode_ == Solid) {
+  if (line_mode == Solid) {
     glDisable(GL_LINE_STIPPLE);
   }
 }
 
 void glView::setVertexMode() {
-  if (vertex_mode_ != Empty) {
+  if (vertex_mode != Empty) {
     glColor3f(verticleColor.redF(), verticleColor.greenF(),
               verticleColor.blueF());
     glPointSize(verticleSize);
@@ -67,11 +67,11 @@ void glView::setVertexMode() {
     glEnableClientState(GL_VERTEX_ARRAY);
     glVertexPointer(3, GL_DOUBLE, 0, vertex_pointer);
 
-    if (vertex_mode_ == Circle) {
+    if (vertex_mode == Circle) {
       glEnable(GL_POINT_SMOOTH);
       glDrawArrays(GL_POINTS, 0, vertex_count / 3);
       glDisable(GL_POINT_SMOOTH);
-    } else if (vertex_mode_ == Square) {
+    } else if (vertex_mode == Square) {
       glDrawArrays(GL_POINTS, 0, vertex_count / 3);
     }
 

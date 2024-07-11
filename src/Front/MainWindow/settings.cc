@@ -70,9 +70,9 @@ void MainWindow::loadSettings() {
   ui->comboBox_typeLine->activated(edgeIndex);
   ui->comboBox_typeVertex->activated(verticleIndex);
 
-  ui->widget->projection_mode_ = projectionIndex;
-  ui->widget->line_mode_ = edgeIndex;
-  ui->widget->vertex_mode_ = verticleIndex;
+  ui->widget->projection_mode = projectionIndex;
+  ui->widget->line_mode = edgeIndex;
+  ui->widget->vertex_mode = verticleIndex;
 
   // load slider values
   QString edgeThicknessQ = settings.value("edgeThickness", 1).toString();

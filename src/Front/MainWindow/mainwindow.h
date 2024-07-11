@@ -74,7 +74,7 @@ class MainWindow : public QMainWindow {
   /* git recording */
   bool flag_record = false;
   double elapsedTime = 0;
-  QVector<QImage> mkr_image;  // The vector for storing frames
+  QVector<QImage> mkr_image;
   QTimer timer_for_gif;
 
   /* setup */

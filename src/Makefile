@@ -14,7 +14,7 @@ TST = TestDir/test.cc
 OBJS = *.o
 
 # Определение системы сборки
-OS=$(shell uname -s)
+OS = $(shell uname -s)
 
 # Правила
 all: clean install run
@@ -24,7 +24,7 @@ install: uninstall
 	cd Front/ && cmake CMakeLists.txt && make
 
 uninstall:
-	rm -rf build dist_calc_qt.tgz
+	rm -rf build 3dviewer2_dist.tgz
 
 run:
 ifeq ($(OS), Linux)
@@ -34,10 +34,10 @@ else
 endif
 
 dist:
-	mkdir temp_arch
-	cp -r Back Controller Front testDir Makefile temp_arch
-	tar cvzf dist_calc_qt.tgz temp_arch/
-	rm -rf temp_arch
+	mkdir 3dviewer2_dist
+	cp -r Back Controller Front TestDir Makefile 3dviewer2_dist
+	tar cvzf 3dviewer2_dist.tgz 3dviewer2_dist/
+	rm -rf 3dviewer2_dist
 
 dvi:
 	open ../README_RUS.md
@@ -55,7 +55,7 @@ clean: cleantest
 	rm -rf */CMakeFiles */resources/*/CMakeFiles
 	rm -rf */CMakeCache.txt
 	rm -rf */resources/*/*.dylib
-	rm -rf temp_arch
+	rm -rf 3dviewer2_dist
 
 cleantest:
 	rm -rf *.gcda

@@ -43,13 +43,13 @@ class RotateTransformation : public MatrixTransformation {
       double x = vArray[i];
       double y = vArray[i + 1];
       double z = vArray[i + 2];
-      if (axis == 0) {  // Rotate around x-axis
+      if (axis == 0) {  // X
         vArray[i + 1] = y * cos(rad) - z * sin(rad);
         vArray[i + 2] = y * sin(rad) + z * cos(rad);
-      } else if (axis == 1) {  // Rotate around y-axis
+      } else if (axis == 1) {  // Y
         vArray[i] = x * cos(rad) + z * sin(rad);
         vArray[i + 2] = -x * sin(rad) + z * cos(rad);
-      } else if (axis == 2) {  // Rotate around z-axis
+      } else if (axis == 2) {  // Z
         vArray[i] = x * cos(rad) - y * sin(rad);
         vArray[i + 1] = x * sin(rad) + y * cos(rad);
       }

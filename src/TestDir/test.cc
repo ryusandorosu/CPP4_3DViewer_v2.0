@@ -1,6 +1,6 @@
 #include <fstream>
 
-#include "../Back/fileReaderPlus.h"
+#include "../Back/parser.h"
 #include "gtest/gtest.h"
 
 void createTempFile(const char* filename, const char* content) {

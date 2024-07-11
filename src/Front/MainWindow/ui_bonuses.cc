@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 
-void MainWindow::selectAndSetColor(QColor& targetColor, QGraphicsView* targetLabel) {
+void MainWindow::selectAndSetColor(QColor& targetColor,
+                                   QGraphicsView* targetLabel) {
   QColorDialog dialog;
   dialog.setOption(QColorDialog::ShowAlphaChannel);
 

@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
   connectSetup();
   defaultSettings();
 
-  QString settingsPath = QCoreApplication::applicationDirPath() + "/" + settingsFile;
+  QString settingsPath =
+      QCoreApplication::applicationDirPath() + "/" + settingsFile;
   if (QFile::exists(settingsPath)) {
     loadSettings();
   }

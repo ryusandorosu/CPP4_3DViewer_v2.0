@@ -4,7 +4,8 @@
 void MainWindow::on_openButton_clicked() {
   defaultSliders();
 
-  QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("*"));
+  QString fileName =
+      QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("*"));
   ui->widget->openFile(fileName);
   ui->file_name->setText(fileName);
 

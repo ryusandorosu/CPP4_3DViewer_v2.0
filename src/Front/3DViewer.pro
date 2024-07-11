@@ -21,23 +21,23 @@ macx {
 }
 
 SOURCES += \
-    ../Back/fileReaderPlus.cc \
+    ../Back/parser.cc \
     ../Controller/controller.cc \
-    main.cpp \
-    GLView/glview.cpp \
-    GLView/file_opening.cpp \
-    GLView/transformation.cpp \
-    MainWindow/mainwindow.cpp \
-    MainWindow/defaults.cpp \
-    MainWindow/settings.cpp \
-    MainWindow/setup.cpp \
-    MainWindow/ui_bonuses.cpp \
-    MainWindow/ui_buttons.cpp \
-    MainWindow/ui_comboboxes.cpp \
-    MainWindow/ui_sliders.cpp
+    main.cc \
+    GLView/glview.cc \
+    GLView/file_opening.cc \
+    GLView/transformation.cc \
+    MainWindow/mainwindow.cc \
+    MainWindow/defaults.cc \
+    MainWindow/settings.cc \
+    MainWindow/setup.cc \
+    MainWindow/ui_bonuses.cc \
+    MainWindow/ui_buttons.cc \
+    MainWindow/ui_comboboxes.cc \
+    MainWindow/ui_sliders.cc
 
 HEADERS += \
-    ../Back/fileReaderPlus.h \
+    ../Back/parser.h \
     ../Back/matrix_transformation.h \
     ../Back/model_facade.h \
     ../Controller/controller.h \

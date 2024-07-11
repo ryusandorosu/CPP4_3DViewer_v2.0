@@ -39,18 +39,28 @@ void MainWindow::loadSettings() {
   int edgeIndexInt = settings.value("edgeIndex", 0).toInt();
   int verticleIndexInt = settings.value("verticleIndex", 0).toInt();
 
-  glView::ProjectionMode projectionIndex = glView::Central; // default
-  if (projectionIndexInt == 0) { projectionIndex = glView::Central; }
-  else if (projectionIndexInt == 1) { projectionIndex = glView::Parallel; }
+  glView::ProjectionMode projectionIndex = glView::Central;  // default
+  if (projectionIndexInt == 0) {
+    projectionIndex = glView::Central;
+  } else if (projectionIndexInt == 1) {
+    projectionIndex = glView::Parallel;
+  }
 
-  glView::LineMode edgeIndex = glView::Solid; // default
-  if (edgeIndexInt == 0) { edgeIndex = glView::Solid; }
-  else if (edgeIndexInt == 1) { edgeIndex = glView::Dashed; }
+  glView::LineMode edgeIndex = glView::Solid;  // default
+  if (edgeIndexInt == 0) {
+    edgeIndex = glView::Solid;
+  } else if (edgeIndexInt == 1) {
+    edgeIndex = glView::Dashed;
+  }
 
-  glView::VertexMode verticleIndex = glView::Empty; // default
-  if (verticleIndexInt == 0) { verticleIndex = glView::Empty; }
-  else if (verticleIndexInt == 1) { verticleIndex = glView::Circle; }
-  else if (verticleIndexInt == 2) { verticleIndex = glView::Square; }
+  glView::VertexMode verticleIndex = glView::Empty;  // default
+  if (verticleIndexInt == 0) {
+    verticleIndex = glView::Empty;
+  } else if (verticleIndexInt == 1) {
+    verticleIndex = glView::Circle;
+  } else if (verticleIndexInt == 2) {
+    verticleIndex = glView::Square;
+  }
 
   ui->comboBox_projection->setCurrentIndex(projectionIndex);
   ui->comboBox_typeLine->setCurrentIndex(edgeIndex);

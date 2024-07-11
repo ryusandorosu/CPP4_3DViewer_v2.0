@@ -7,8 +7,8 @@ CFLAGS = -std=c++17 -Wall -Werror -Wextra
 COMPILE = $(CC) $(CFLAGS)
 
 # Исходные файлы
-SRC = Back/fileReaderPlus.cc
-TST = testDir/test.cc
+SRC = Back/parser.cc
+TST = TestDir/test.cc
 
 # Объектные файлы
 OBJS = *.o
@@ -45,6 +45,8 @@ dvi:
 clean: cleantest
 	rm -rf *.o */*.o
 	rm -rf *.a */*.a
+	rm -rf *.obj
+	rm -rf */resources/*/*.so
 	rm -rf */Makefile */resources/*/Makefile
 	rm -rf */*.conf
 	rm -rf */.qt
@@ -75,13 +77,17 @@ test: cleantest $(TARGET)
 gcov_report: cleantest $(TARGET)
 	$(COMPILE) -fprofile-arcs -ftest-coverage $(SRC) ./$(TST) -o tests -lgtest -lgtest_main -pthread
 	./tests
+ifeq ($(OS), Linux)
+	lcov -t "tests" -o s21_test.info --no-external -c -d .
+else
 	lcov -t "tests" -o s21_test.info --no-external -c -d . --ignore-errors inconsistent,format,usage
+endif
 	genhtml -o report s21_test.info
 	open ./report/index.html
 	make cleantest
 
 clang-format:
-	clang-format --style=Google -i */*.cc */*.h
+	clang-format --style=Google -i */*.cc */*/*.cc */*.h */*/*.h
 
 code_style:
-	clang-format --style=Google -n */*.cc */*.h
+	clang-format --style=Google -n */*.cc */*/*.cc */*.h */*/*.h

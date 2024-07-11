@@ -15,7 +15,7 @@
 
 class glView : public QOpenGLWidget, public Observer {
  public:
-  glView(QWidget *parent = 0) : QOpenGLWidget(parent) {};
+  glView(QWidget *parent = 0) : QOpenGLWidget(parent){};
   ~glView() { deletePointers(); };
 
   /* variables*/
@@ -38,9 +38,9 @@ class glView : public QOpenGLWidget, public Observer {
   void initializeGL() override;
   void resizeGL(int w, int h) override { glViewport(0, 0, w, h); };
   void paintGL() override;
-  void setProjection(); // bonus 1.1
-  void setLineMode();   // bonus 1.2
-  void setVertexMode();   // bonus 1.2
+  void setProjection();  // bonus 1.1
+  void setLineMode();    // bonus 1.2
+  void setVertexMode();  // bonus 1.2
 
   /* transformation */
   void scaleChange(double scaleLocal);

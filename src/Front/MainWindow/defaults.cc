@@ -24,7 +24,7 @@ void MainWindow::defaultSliders() {
 void MainWindow::defaultSettings() {
   defaultSliders();
   defaultColors();
-  
+
   glView::ProjectionMode projectionDefault = glView::Central;
   ui->comboBox_projection->activated(projectionDefault);
   ui->comboBox_projection->setCurrentIndex(projectionDefault);
@@ -32,11 +32,11 @@ void MainWindow::defaultSettings() {
   glView::LineMode edgeDefault = glView::Solid;
   ui->comboBox_typeLine->activated(edgeDefault);
   ui->comboBox_typeLine->setCurrentIndex(edgeDefault);
-  
+
   glView::VertexMode verticleDefault = glView::Empty;
   ui->comboBox_typeVertex->activated(verticleDefault);
   ui->comboBox_typeVertex->setCurrentIndex(verticleDefault);
-  
+
   int edgeThicknessDefault = 1;
   ui->edge_thickness_edit->setText(QString::number(edgeThicknessDefault));
   ui->widget->edgeThickness = edgeThicknessDefault;

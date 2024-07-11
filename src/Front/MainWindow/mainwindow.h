@@ -8,8 +8,8 @@
 #include <QtWidgets>
 
 #include "../GLView/glview.h"
-#include "ui_mainwindow.h"
 #include "../resources/QtGifImage/include/gifimage/qgifimage.h"
+#include "ui_mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,7 +21,7 @@ class MainWindow : public QMainWindow {
   Q_OBJECT
 
  public:
-  MainWindow(QWidget *parent = nullptr);
+  MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
 
  private slots:
@@ -67,12 +67,12 @@ class MainWindow : public QMainWindow {
   void on_horizontalSlider_Z_moving_valueChanged(int value);
 
  private:
-  Ui::MainWindow *ui;
+  Ui::MainWindow* ui;
   glView mView;
   QString settingsFile = "settings.conf";
 
   /* git recording */
-  bool flag_record = false;  // запись (1 - включена, 0 - выключена)
+  bool flag_record = false;
   double elapsedTime = 0;
   QVector<QImage> mkr_image;  // The vector for storing frames
   QTimer timer_for_gif;

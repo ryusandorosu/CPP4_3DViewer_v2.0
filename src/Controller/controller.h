@@ -1,7 +1,7 @@
 #ifndef S21_CONTROLLER_H
 #define S21_CONTROLLER_H
 
-#include "../Back/fileReaderPlus.h"
+#include "../Back/parser.h"
 
 class controller {
  public:

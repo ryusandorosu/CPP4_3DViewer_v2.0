@@ -91,3 +91,10 @@ clang-format:
 
 code_style:
 	clang-format --style=Google -n */*.cc */*/*.cc */*.h */*/*.h
+
+memtest: test
+ifeq ($(OS), Linux)
+	valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all -s ./test
+else
+	leaks --atExit -- ./test
+endif

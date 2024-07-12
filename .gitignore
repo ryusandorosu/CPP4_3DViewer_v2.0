@@ -3,6 +3,8 @@ CPP4_*
 code-samples
 materials
 build*
+test
+tests
 .DS_Store
 
 examples
